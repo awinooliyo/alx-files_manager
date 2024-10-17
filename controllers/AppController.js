@@ -1,6 +1,6 @@
 // controllers/AppController.js
-import redisClient from '../utils/redis.js';
-import dbClient from '../utils/db.js';
+import redisClient from '../utils/redis';
+import dbClient from '../utils/db';
 
 class AppController {
   /**
@@ -10,7 +10,7 @@ class AppController {
   static getStatus(req, res) {
     const status = {
       redis: redisClient.isAlive(),
-      db: dbClient.isAlive()
+      db: dbClient.isAlive(),
     };
     return res.status(200).json(status);
   }
@@ -25,7 +25,7 @@ class AppController {
       const filesCount = await dbClient.nbFiles();
       const stats = {
         users: usersCount,
-        files: filesCount
+        files: filesCount,
       };
       return res.status(200).json(stats);
     } catch (err) {
